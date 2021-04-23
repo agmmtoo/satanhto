@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<!-- % load embed_video_tags %} -->
+
+
+{% block title %}
+{{ episode.title }}
+{% endblock %}
+
+{% block content %}
+<video controls name="media">
+    <source src="{{ episode.file.url }}" type="video/mp4">
+</video>
+<!-- % video episode.file.ur "small" %} -->
+{% endblock %}

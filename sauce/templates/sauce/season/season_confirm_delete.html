@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <p>All Episodes in the "{{ season.name }}" of {{ series.name }}will get deleted. Are you sure?</p>
+    <input type="submit" value="Confirm">
+</form>

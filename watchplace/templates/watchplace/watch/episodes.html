@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ episode.title }}
+{% endblock %}
+
+{% block content %}
+{{ episode.season.series.name }}</br>
+{{ episode.season.name }}</br>
+{{ episode.order }}. {{ episode.title }}</br>
+
+<video controls>
+    <source src="{{ episode.file.url }}" type="video/mp4">
+</video>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Manage Series List
+{% endblock %}
+
+{% block content %}
+<h1>Manage Seires List</h1>
+
+{% for series in series_list %}
+{{ series.name }}
+<a href="{% url "sauce:series_update" series.slug %}">Edit</a>
+<a href="{% url "sauce:series_delete" series.slug %}">Delete</a>
+<a href="{% url "sauce:season_list" series.slug %}">Manage Seasons</a>
+</br>
+
+{% empty %}
+You haven't uploaded any single series yet. Get yo ass to work!<br>
+
+{% endfor %}
+<a href="{% url "sauce:series_create" %}">Add new series</a>
+{% endblock %}

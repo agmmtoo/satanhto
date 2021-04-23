@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if season_obj %}
+Edit season "{{ season_obj.name }}"
+{% else %}
+Add new season of series {{ series.name }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if season_obj %}
+    Edit season "{{ season_obj.name }}"
+    {% else %}
+    Add new season of series {{ series.name }}
+    {% endif %}
+</h1>
+<div>
+    <h2>Season info</h2>
+    <!-- enctype="multipart/form-data" -->
+    <form action="" method="POST" >
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save content"></p>
+    </form>
+</div>
+{% endblock %}

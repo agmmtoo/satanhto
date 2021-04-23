@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ series.name }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ series.name }}</h1>
+
+{% for season in series.seasons.all %}
+{{ season.name }}
+<a href="{% url "sauce:season_edit" series.id season.id %}">Edit</a>
+<a href="{% url "sauce:season_delete" series.id season.id %}">Delete</a>
+<a href="{% url "sauce:episode_list" season.id season.slug %}">Manage Episodes</a>
+</br>
+{% empty %}
+No seasons yet.
+{% endfor %}
+</br><a href="{% url "sauce:season_create" series.id %}">Add new season</a>
+{% endblock %}
