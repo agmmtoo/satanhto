@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 
 from django.conf import settings
 
-def user_dir(instance, filename):
-    return 'user_{0}/{1}'.format(instance.owner.username, filename)
+from .ImageUploadLocation import user_dir
 
 class Series(models.Model):
     name = models.CharField(max_length=250)

@@ -12,6 +12,9 @@
 Pic - <img src="{{ user.profile.picture.url }}"></br>
 <!-- If no 'if', file not found error -->
 {% endif %}
+{% if user.profile.channel %}
+Honored member of <a href="#">{{ user.profile.channel.name }}</a></br>
+{% endif %}
 Born on - {{ user.profile.date_of_birth }}</br>
 Desc - {{ user.profile.description }}</br>
 <a href="{% url "profile" %}">View your profile</a>?</br>

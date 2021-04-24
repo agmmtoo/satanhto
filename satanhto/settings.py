@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channel.apps.ChannelConfig',
     'sauce.apps.SauceConfig',
     'watchplace.apps.WatchplaceConfig',
     'account.apps.AccountConfig',
