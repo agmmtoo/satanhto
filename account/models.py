@@ -6,8 +6,8 @@ from channel.models import Channel
 from sauce.ImageUploadLocation import user_dir
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    date_of_birth = models.DateField(blank=True, null=True, help_text='Optional')
+    owner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date_of_birth = models.DateField(blank=True, null=True, help_text='yy-mm-dd, Optional')
     picture = models.ImageField(upload_to=user_dir)
     description = models.TextField(help_text='Bio...or smth like that.')
 
@@ -15,4 +15,4 @@ class Profile(models.Model):
     # Do_NOTHIG Profile on Channel deletion
 
     def __str__(self):
-        return f'Profile of {self.user.username}'
+        return f'Profile of {self.owner.username}'

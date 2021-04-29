@@ -12,7 +12,10 @@
 {% endif %}
 Hepburn - {{ series.hepburn }}</br>
 Description - {{ series.description }}</br>
-Owner - <a href="{% url "view_profile" series.owner.username %}">{{ series.owner.username }}</a></br>
+Owner - <a href="{% url "view_profile" series.owner.username %}">{{ series.owner.username }}</a>
+{% if series.owner.profile.channel %}
+of <a href="{% url "channel:channel_detail" series.owner.profile.channel.slug %}">{{ series.owner.profile.channel.name }}</a>
+{% endif %}</br>
 Created on - {{ series.created }}</br>
 Updated on - {{ series.updated }}</br>
 

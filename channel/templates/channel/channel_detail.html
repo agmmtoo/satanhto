@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ channel.name }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ channel.name }}</h1>
+{% for member in channel.members.all %}
+<a href="{% url "view_profile" member.owner.username %}">{{ member.owner.username }}</a>
+{% empty %}
+No-member channel! Weird, right?
+{% endfor %}
+
+{% endblock %}

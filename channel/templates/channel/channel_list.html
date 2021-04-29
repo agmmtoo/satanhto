@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Channel List
+{% endblock %}
+
+{% block content %}
+
+{% for channel in channels %}
+<a href="{% url "channel:channel_detail" channel.slug %}">
+{{ channel.name }}</br>
+</a>
+{% empty %}No channels yet.
+{% endfor %}
+
+{% endblock %}

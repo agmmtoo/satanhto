@@ -21,6 +21,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('watchplace/', include('watchplace.urls', namespace='watchplace')),
     path('sauce/', include('sauce.urls', namespace='sauce')),
+    path('channel/', include('channel.urls', namespace='channel')),
 ]
 
 from django.conf import settings
