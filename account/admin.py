@@ -4,16 +4,16 @@ from django.contrib.auth.models import User
 
 from .models import Profile
 
-class ProfileInline(admin.StackedInline):
+class ProfileInline(admin.TabularInline):
     model = Profile
     can_delete = False
 
 class UserAdmin(BaseUserAdmin):
     inlines = [ProfileInline,]
 
-# @admin.register(Profile)
-# class AdminProfile(admin.ModelAdmin):
-#     list_display = ['date_of_birth', 'picture', 'description']
+@admin.register(Profile)
+class AdminProfile(admin.ModelAdmin):
+    list_display = ['owner', 'date_of_birth', 'picture', 'description']
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

@@ -27,7 +27,8 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         result = super().form_valid(form)
-        Profile.objects.create(user=form.instance)
+        # Create Profile object
+        Profile.objects.create(owner=form.instance)
         return result
 
 @login_required

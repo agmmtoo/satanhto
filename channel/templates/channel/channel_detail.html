@@ -1,15 +1,46 @@
 {% extends "base.html" %}
+{% load channel_tags %}
 
 {% block title %}
 {{ channel.name }}
 {% endblock %}
 
 {% block content %}
+
+<!-- If channel has logo -->
+{% if channel.logo %}
+<img src="{{ channel.logo.url }}" /></br>
+{% endif %}
+
 <h1>{{ channel.name }}</h1>
-{% for member in channel.members.all %}
-<a href="{% url "view_profile" member.owner.username %}">{{ member.owner.username }}</a>
-{% empty %}
-No-member channel! Weird, right?
+
+<!-- If channel has link -->
+{% if channel.link %}
+<a href="{{ channel.link }}">{{ channel.link }}</a></br>
+{% endif %}
+
+<p>{{ channel.description|markdown }}</p></br>
+Collobrated since {{ channel.created }}</br>
+Latest updated on {{ channel.updated }}</br>
+
+<!-- Member list -->
+Members:
+<ul>
+    {% for member in channel.members.all %}
+    <li>
+        <a href="{% url "view_profile" member.owner.username %}">{{ member.owner.username }}</a>
+    </li>
+    {% empty %}
+    No-member channel! Weird, right?
+    {% endfor %}
+</ul>
+
+<!-- Series Uploaded from members -->
+<h1>Uploaded Series</h1>
+{% for series in series_uploaded %}
+<a href="{% url "watchplace:series_detail" series.slug %}">
+{{ series.name }}
+</a></br>
 {% endfor %}
 
 {% endblock %}

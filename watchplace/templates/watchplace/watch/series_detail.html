@@ -7,15 +7,22 @@
 {% block content %}
 
 <h1>{{ series.name }}</h1>
+
+<!-- If series has cover -->
 {% if series.cover %}
 <img src="{{ series.cover.url }}" /></br>
 {% endif %}
+
+
 Hepburn - {{ series.hepburn }}</br>
 Description - {{ series.description }}</br>
 Owner - <a href="{% url "view_profile" series.owner.username %}">{{ series.owner.username }}</a>
 {% if series.owner.profile.channel %}
 of <a href="{% url "channel:channel_detail" series.owner.profile.channel.slug %}">{{ series.owner.profile.channel.name }}</a>
 {% endif %}</br>
+
+<!-- Optmize above code in view -->
+
 Created on - {{ series.created }}</br>
 Updated on - {{ series.updated }}</br>
 
