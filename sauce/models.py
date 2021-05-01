@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from django.conf import settings
 
@@ -12,7 +12,7 @@ class Series(models.Model):
     description = models.TextField()
     cover = models.ImageField(upload_to=user_dir, blank=True, null=True)
 
-    owner = models.ForeignKey(User, related_name='series_created', on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='series_created', on_delete=models.CASCADE)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -38,7 +38,7 @@ class Season(models.Model):
 
 
 class Episode(models.Model):
-    owner = models.ForeignKey(User, related_name='episodes_uploaded', on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='episodes_uploaded', on_delete=models.CASCADE)
     season = models.ForeignKey(Season, related_name='episodes', on_delete=models.CASCADE)
     title = models.CharField(max_length=200, help_text='If no title available, user Episode 1, 2 etc.')
     slug = models.SlugField(max_length=250)

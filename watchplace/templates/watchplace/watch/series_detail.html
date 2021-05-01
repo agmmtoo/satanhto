@@ -39,4 +39,16 @@ No episodes yet.
 No seasons yet.
 {% endfor %}
 
+<!-- Comments -->
+<h1>Comments</h1>
+{% for comment in series.comments.all %}
+<div class="comment{% if comment.user.profile in series.owner.profile.channel.members.all %} admin{% endif %}">
+    <a href="{% url "view_profile" comment.user.username %}">{{ comment.user.username }}</a>
+    {{ comment.created }}</br>
+    {{ comment.body }}
+</div>
+{% empty %}
+No one commented, be out first.
+{% endfor %}
+
 {% endblock %}
