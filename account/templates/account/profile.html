@@ -17,12 +17,14 @@ Pic - <img src="{{ user.profile.picture.url }}"></br>
 <!-- Check whether user is uploader -->
 {% if user.profile.channel %}
 Oh - it's you. You are a member of <a href="{% url "channel:channel_detail" user.profile.channel.slug %}">{{ user.profile.channel.name }}</a>.</br>
-<a href="{% url "channel:channel_update" %}">Edit</a> your channel?
+<a href="{% url "channel:channel_update" %}">Edit</a> your channel?</br>
+Or <a href="{% url "sauce:series_list" %}">Upload some</a>.
 {% endif %}
 
 Born on - {{ user.profile.date_of_birth }}</br>
 Desc - {{ user.profile.description }}</br>
-<a href="{% url "logout" %}">Logout</a>?</br>
+<a href="{% url "watchplace:series_list" %}">Watchplace</a></br>
 <a href="{% url "password_change" %}">Change password</a>?</br>
 <a href="{% url "profile_edit" %}">Edit profile</a>?</br>
+<a href="{% url "logout" %}">Logout</a>?
 {% endblock %}
