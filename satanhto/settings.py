@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1dpyfli#h2_&xe=$gqi7h0kx5v@-e#30tjcg-yc9c44)n7%*6&'
+SECRET_KEY = None
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -140,3 +140,7 @@ LOGOUT_URL = 'logout'
 import os
 MEDIA_URL = 'http://127.0.0.1:5500/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
