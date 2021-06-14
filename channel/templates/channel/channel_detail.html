@@ -14,11 +14,6 @@
 
 <h1>{{ channel.name }}</h1>
 
-<!-- If channel has link -->
-{% if channel.link %}
-<a href="{{ channel.link }}">{{ channel.link }}</a></br>
-{% endif %}
-
 <p>{{ channel.description|markdown }}</p></br>
 Collobrated since {{ channel.created }}</br>
 Latest updated on {{ channel.updated }}</br>

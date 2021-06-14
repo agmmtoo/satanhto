@@ -40,10 +40,20 @@ No seasons yet.
 {% endfor %}
 
 <!-- Comments -->
+Leave a comment
+<form method="POST">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Done">
+</form>
+
 <h1>Comments</h1>
 {% for comment in series.comments.all %}
 <div class="comment{% if comment.user.profile in series.owner.profile.channel.members.all %} admin{% endif %}">
-    <a href="{% url "view_profile" comment.user.username %}">{{ comment.user.username }}</a>
+    <a href="{% url "view_profile" comment.user.username %}">
+        <img class="comment" src="{{ comment.user.profile.picture.url }}">
+        {{ comment.user.username }}
+    </a>
     {{ comment.created }}</br>
     {{ comment.body }}
 </div>

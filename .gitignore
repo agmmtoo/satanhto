@@ -3,4 +3,5 @@ __pycache__/
 migrations/
 db.sqlite3
 default.mp4
+.vscode/
 *.pyc
