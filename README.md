@@ -68,6 +68,12 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-## License
+- - -
 
-[MIT](https://choosealicense.com/licenses/mit/)
+## Diving into structure
+
+### Settings development environment
+
+Since Django is inefficient at serving media files,
+I set ```MEDIA_URL``` value from [settings](satanhto/settings.py) to ```http://127.0.0.1:5500/media/```.
+If you use VS Code, you can set up a local server with  [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) at port 5500. Make sure the live server is up and running while the project is active.
